@@ -29,9 +29,9 @@ public class UtilisateurControlleur {
     LoginService loginService;
 
 
-    @PostMapping("/insertVoiture")
+    @PostMapping("/insertAnnonce")
     public ResponseEntity<String> insertAnnonce(
-            @RequestParam String idUtilisateur,
+            @RequestHeader(name = "Authorization") String idUtilisateur,
             @RequestParam int idMarque,
             @RequestParam int idModele,
             @RequestParam int idCategorie,
