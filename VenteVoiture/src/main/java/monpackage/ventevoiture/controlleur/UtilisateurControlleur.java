@@ -51,8 +51,10 @@ public class UtilisateurControlleur {
     ) {
         try {
             // Créer une voiture
+            String id =  idUtilisateur.replace("Bearer ", "");
+            String token = String.valueOf(loginService.getIdFromToken(id));
             Voiture voiture = new Voiture();
-            voiture.setIdUtilisateur(idUtilisateur);
+            voiture.setIdUtilisateur(token);
             voiture.setIdMarque(idMarque);
             voiture.setIdModele(idModele);
             voiture.setIdCategorie(idCategorie);
@@ -64,7 +66,7 @@ public class UtilisateurControlleur {
             List<PhotoVoiture> photos = new ArrayList<>();
             for (String image : image_voiture) {
                 PhotoVoiture photo = new PhotoVoiture();
-                photo.setId_utilisateur(idUtilisateur);
+                photo.setId_utilisateur(token);
                 photo.setImage_voiture(image);
                 photos.add(photo);
             }
