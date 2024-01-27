@@ -16,8 +16,7 @@ import java.util.List;
 public class UtilisateurControlleur {
     @Autowired
     UtilisateurService utilisateurService;
-    @Autowired
-    InscriptionService inscriptionService;
+
     @Autowired
     VoitureService voitureService;
     @Autowired
@@ -29,26 +28,7 @@ public class UtilisateurControlleur {
     @Autowired
     LoginService loginService;
 
-    @PostMapping("/insertUtilisateur")
-    public ResponseEntity<String> insertUser(@RequestParam String nom, @RequestParam String prenom, @RequestParam Date datenaissance, @RequestParam String email, @RequestParam String motdepasse, @RequestParam String motdepasseconfirm ){
-        try {
-            if (motdepasse.equals(motdepasseconfirm)) {
-                Utilisateur user = new Utilisateur();
-                user.setNom(nom);
-                user.setPrenom(prenom);
-                user.setDateDeNaissance(datenaissance);
-                user.setEmail(email);
-                user.setMotDePasse(motdepasse);
-                inscriptionService.insererUtilisateur(user);
-                return ResponseEntity.ok("Utilisateur inséré avec succès.");
-            }else{
-                return ResponseEntity.ok("Verifier bien votre mot de passe.");
-            }
 
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Email existe deja");
-        }
-    }
     @PostMapping("/insertVoiture")
     public ResponseEntity<String> insertAnnonce(
             @RequestParam String idUtilisateur,
@@ -134,7 +114,7 @@ public class UtilisateurControlleur {
             fav.setId_voiture(id_voiture);
             fav.setId_utilisateur(token);
             favorisService.inserer(fav);
-            return ResponseEntity.ok("Utilisateur inséré avec succès.");
+            return ResponseEntity.ok("Favoris inséré avec succès.");
         } catch (Exception e) {
             System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur lors de l'insertion.");
@@ -148,7 +128,7 @@ public class UtilisateurControlleur {
             String token = String.valueOf(loginService.getIdFromToken(id));
             favorisService.supprimer(token,id_voiture);
 
-            return ResponseEntity.ok("Utilisateur supprimer avec succès.");
+            return ResponseEntity.ok("Favoris supprimer avec succès.");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur lors de l'insertion.");
         }
