@@ -47,7 +47,6 @@ public class LoginService {
     }
     private String generateToken(String userId) {
         Key key = getKey();
-
         Date expirationDate = new Date(System.currentTimeMillis() + 24 * 3600 * 1000);
 
         return Jwts.builder()
