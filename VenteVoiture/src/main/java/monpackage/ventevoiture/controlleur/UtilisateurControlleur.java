@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = {"http://finalprojectcar-production-aab1.up.railway.app"})
 @RequestMapping("/api/utilisateur")
 public class UtilisateurControlleur {
     @Autowired
@@ -28,7 +29,7 @@ public class UtilisateurControlleur {
     @Autowired
     LoginService loginService;
 
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+//    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @PostMapping("/insertAnnonce")
     public ResponseEntity<String> insertAnnonce(
             @RequestHeader(name = "Authorization") String idUtilisateur,
@@ -94,7 +95,7 @@ public class UtilisateurControlleur {
         }
     }
 
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+//    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @GetMapping("/selectAllFavoris")
     public List<Favoris> selectAllFavoris(@RequestHeader(name = "Authorization") String id_user) {
         try {
@@ -138,7 +139,7 @@ public class UtilisateurControlleur {
     }
     @Autowired
     MarqueVoitureService marqueVoitureService;
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+//    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @GetMapping("/selectAllMarque")
     public List<MarqueVoiture> selectAllMarque() {
         try {
@@ -152,7 +153,7 @@ public class UtilisateurControlleur {
     }
     @Autowired
     ModelVoitureService modelVoitureService;
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+//    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @GetMapping("/selectAllModele")
     public List<ModelVoiture> selectAllModele() {
         try {
@@ -165,7 +166,7 @@ public class UtilisateurControlleur {
     }
     @Autowired
     CategorieVoitureService categorieVoitureService;
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+//    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @GetMapping("/selectAllCategorie")
     public List<CategorieVoiture> selectAllCategorie() {
         try {
@@ -179,7 +180,7 @@ public class UtilisateurControlleur {
 
     @Autowired
     EnergieVoitureService energieVoitureService;
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+//    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @GetMapping("/selectAllEnergie")
     public List<EnergieVoiture> selectAllEnergie() {
         try {
@@ -193,7 +194,7 @@ public class UtilisateurControlleur {
 
     @Autowired
     TransmissionVoitureService transmissionVoitureService;
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+//    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @GetMapping("/selectAllTransmission")
     public List<TransmissionVoiture> selectAllTransmission() {
         try {

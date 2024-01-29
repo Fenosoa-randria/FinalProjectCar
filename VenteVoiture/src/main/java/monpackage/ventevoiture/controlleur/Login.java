@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 
 @RestController
-@CrossOrigin(origins = {"http://*"})
+@CrossOrigin(origins = {"http://finalprojectcar-production-aab1.up.railway.app"})
 @RequestMapping("/api/login")
 public class Login {
 
