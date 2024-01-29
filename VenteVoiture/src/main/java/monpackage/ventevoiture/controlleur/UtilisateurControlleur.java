@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"https://*"})
 @RequestMapping("/api/utilisateur")
 public class UtilisateurControlleur {
     @Autowired
