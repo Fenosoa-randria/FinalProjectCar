@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"http://*"})
+@CrossOrigin(origins = {"https://*"})
 
 @RequestMapping("/api/accueil")
 public class ProprietaireVoitureControlleur {
