@@ -116,5 +116,20 @@ public class ProprietaireVoitureControlleur {
         }
         return null;
     }
+@Autowired
+MieuxVisiterService mieuxVisiterService;
+    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @GetMapping("/selectAllMieuxVisite")
+    public List<MieuxVisiter> selectAllVisite() {
+        try {
+            // Get the connection
+            List<MieuxVisiter> listMieux = mieuxVisiterService.selectAllMieuxVisite();
+            return listMieux;
+        }  catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
 
 }

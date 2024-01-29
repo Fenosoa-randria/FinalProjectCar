@@ -19,5 +19,6 @@ public class EnergieVoitureService {
     public void insererEnergie(EnergieVoiture energieVoiture){
         energieVoitureRepository.save(energieVoiture);
     }
+    public  void updateEnergie(int id,String nom){energieVoitureRepository.updateEnergie(id,nom);}
 
 }

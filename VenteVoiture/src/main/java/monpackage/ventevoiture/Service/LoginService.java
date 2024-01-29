@@ -31,11 +31,13 @@ public class LoginService {
         Optional<Utilisateur> utilisateur = utilisateurRepository.findAllByEmailAndMotDePasse(email, motDePasse);
         Optional<Admin> admin = adminRepository.findAllByEmailAndMotDePasse(email, motDePasse);
 
+
         if (utilisateur.isPresent()) {
             String token = generateToken(utilisateur.get().getIdUtilisateur());
             return new String[]{token, "1"}; // Utilisateur ajouté dans la liste avec le token et le numéro 1
         } else if (admin.isPresent()) {
             String token = generateToken(admin.get().getIdAdmin());
+
             return new String[]{token, "2"}; // Admin ajouté dans la liste avec le token et le numéro 2
         } else {
             return null; // Retourne null en cas d'échec d'authentification

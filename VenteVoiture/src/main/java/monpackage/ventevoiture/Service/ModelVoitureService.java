@@ -18,5 +18,6 @@ public class ModelVoitureService {
     public void insererModel(ModelVoiture model){
         modelVoitureRepository.save(model);
     }
+    public  void updateModele(int id,String nom){modelVoitureRepository.updateModele(id,nom);}
 
 }

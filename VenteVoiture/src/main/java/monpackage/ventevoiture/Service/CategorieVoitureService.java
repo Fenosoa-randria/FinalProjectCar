@@ -19,5 +19,5 @@ public class CategorieVoitureService {
     public void insererCategorie(CategorieVoiture categorie){
         categorieVoitureRepository.save(categorie);
     }
-
+    public  void updateCategorie(int id,String nom){categorieVoitureRepository.updateCategorie(id,nom);}
 }

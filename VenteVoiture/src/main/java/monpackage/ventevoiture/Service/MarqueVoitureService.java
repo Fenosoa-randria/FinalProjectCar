@@ -18,5 +18,5 @@ public class MarqueVoitureService {
     public void insererMarque(MarqueVoiture marqueVoiture){
         marqueVoitureRepository.save(marqueVoiture);
     }
-
+    public  void updateMarque(int id_marque,String nom_marque){marqueVoitureRepository.updateMarque(id_marque,nom_marque);}
 }

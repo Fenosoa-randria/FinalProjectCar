@@ -13,10 +13,12 @@ import java.util.List;
 public class ProprietaireVoitureService {
     @Autowired
     private ProprietaireVoitureRepository proprietaireRepository;
+
     public List<ProprietaireVoitureView> getAllVoiture() {
         // Appeler la méthode personnalisée du repository
-        return proprietaireRepository.findAll();
+        return proprietaireRepository.findVoitureByEtat();
     }
+
     public List<ProprietaireVoitureView> getById(int id) {
         // Appeler la méthode personnalisée du repository
         return proprietaireRepository.findById(id);

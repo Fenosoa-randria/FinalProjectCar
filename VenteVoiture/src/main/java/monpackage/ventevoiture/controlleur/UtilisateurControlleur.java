@@ -28,7 +28,7 @@ public class UtilisateurControlleur {
     @Autowired
     LoginService loginService;
 
-
+    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @PostMapping("/insertAnnonce")
     public ResponseEntity<String> insertAnnonce(
             @RequestHeader(name = "Authorization") String idUtilisateur,
@@ -36,20 +36,21 @@ public class UtilisateurControlleur {
             @RequestParam int idModele,
             @RequestParam int idCategorie,
             @RequestParam int idEnergie,
-            @RequestParam int idType,
+            @RequestParam int transmissions,
             @RequestParam double prix,
             @RequestParam String[] image_voiture,
             @RequestParam String provenance,
-            @RequestParam String controlle_technique,
-            @RequestParam String kilometrage_compteur,
-            @RequestParam String nombre_place,
+            @RequestParam String controleTechnique,
+            @RequestParam String kilometrage,
+            @RequestParam String nombreDePlace,
             @RequestParam String longueur,
-            @RequestParam String volume_de_coffre,
-            @RequestParam String puissance_vehicule,
+            @RequestParam String volumeDeCoffre,
+            @RequestParam String puissanceDeVehicule,
             @RequestParam String immatriculation,
-            @RequestParam Date annee_circulation
+            @RequestParam Date anneeDeCirculation
     ) {
         try {
+            System.out.println("coucou");
             // Créer une voiture
             String id =  idUtilisateur.replace("Bearer ", "");
             String token = String.valueOf(loginService.getIdFromToken(id));
@@ -60,7 +61,7 @@ public class UtilisateurControlleur {
             voiture.setIdCategorie(idCategorie);
             voiture.setIdEnergie(idEnergie);
             voiture.setPrix(prix);
-            voiture.setIdTypeVitesse(idType);
+            voiture.setIdTypeVitesse(transmissions);
 
             // Créer une photo pour la voiture
             List<PhotoVoiture> photos = new ArrayList<>();
@@ -74,13 +75,13 @@ public class UtilisateurControlleur {
             // Créer une caractéristique pour la voiture
             VoitureCaracteristique caracteristiqueVoiture = new VoitureCaracteristique();
             caracteristiqueVoiture.setProvenance(provenance);
-            caracteristiqueVoiture.setControleTechnique(controlle_technique);
-            caracteristiqueVoiture.setNombrePlace(nombre_place);
-            caracteristiqueVoiture.setVolumeDeCoffre(volume_de_coffre);
-            caracteristiqueVoiture.setPuissanceVehicule(puissance_vehicule);
+            caracteristiqueVoiture.setControleTechnique(controleTechnique);
+            caracteristiqueVoiture.setNombrePlace(nombreDePlace);
+            caracteristiqueVoiture.setVolumeDeCoffre(volumeDeCoffre);
+            caracteristiqueVoiture.setPuissanceVehicule(puissanceDeVehicule);
             caracteristiqueVoiture.setImmatriculation(immatriculation);
-            caracteristiqueVoiture.setKilometrageCompteur(kilometrage_compteur);
-            caracteristiqueVoiture.setAnneeCirculation(annee_circulation);
+            caracteristiqueVoiture.setKilometrageCompteur(kilometrage);
+            caracteristiqueVoiture.setAnneeCirculation(anneeDeCirculation);
             caracteristiqueVoiture.setLongueur(longueur);
 
             // Insérer la voiture avec sa photo et sa caractéristique
@@ -135,7 +136,74 @@ public class UtilisateurControlleur {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur lors de l'insertion.");
         }
     }
+    @Autowired
+    MarqueVoitureService marqueVoitureService;
+    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @GetMapping("/selectAllMarque")
+    public List<MarqueVoiture> selectAllMarque() {
+        try {
 
+            List<MarqueVoiture> listMarque = marqueVoitureService.getAllMarque();
+            return listMarque;
+        }  catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    @Autowired
+    ModelVoitureService modelVoitureService;
+    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @GetMapping("/selectAllModele")
+    public List<ModelVoiture> selectAllModele() {
+        try {
+            List<ModelVoiture> listModele = modelVoitureService.getAllModel();
+            return listModele;
+        }  catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    @Autowired
+    CategorieVoitureService categorieVoitureService;
+    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @GetMapping("/selectAllCategorie")
+    public List<CategorieVoiture> selectAllCategorie() {
+        try {
+            List<CategorieVoiture> listCategorie = categorieVoitureService.getAllCategorie();
+            return listCategorie;
+        }  catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    @Autowired
+    EnergieVoitureService energieVoitureService;
+    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @GetMapping("/selectAllEnergie")
+    public List<EnergieVoiture> selectAllEnergie() {
+        try {
+            List<EnergieVoiture> listEnergie = energieVoitureService.getAllEnergie();
+            return listEnergie;
+        }  catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    @Autowired
+    TransmissionVoitureService transmissionVoitureService;
+    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @GetMapping("/selectAllTransmission")
+    public List<TransmissionVoiture> selectAllTransmission() {
+        try {
+            List<TransmissionVoiture> listTransmission = transmissionVoitureService.selectAllTransmission();
+            return listTransmission;
+        }  catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 
 }
 

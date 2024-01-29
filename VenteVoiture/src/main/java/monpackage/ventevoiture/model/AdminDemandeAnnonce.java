@@ -8,8 +8,8 @@ import jakarta.persistence.Table;
 import java.sql.Date;
 
 @Entity
-@Table(name = "voiture_annonce", schema = "public")
-public class ProprietaireVoitureView {
+@Table(name = "voiture_demande_annonce_view", schema = "public")
+public class AdminDemandeAnnonce {
 
     @Id
     private int idVoiture;
@@ -62,26 +62,7 @@ public class ProprietaireVoitureView {
 
     @Column(name = "immatriculation")
     private String immatriculation;
-    @Column(name = "id_admin")
-    private String id_admin;
-    @Column(name = "etat_annonce")
-    private int etat_annonce;
 
-    public String getId_admin() {
-        return id_admin;
-    }
-
-    public void setId_admin(String id_admin) {
-        this.id_admin = id_admin;
-    }
-
-    public int getEtat_annonce() {
-        return etat_annonce;
-    }
-
-    public void setEtat_annonce(int etat_annonce) {
-        this.etat_annonce = etat_annonce;
-    }
 
     public int getIdVoiture() {
         return idVoiture;

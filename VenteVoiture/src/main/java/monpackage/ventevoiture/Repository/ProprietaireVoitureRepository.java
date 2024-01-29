@@ -30,4 +30,7 @@ public interface ProprietaireVoitureRepository extends JpaRepository<Proprietair
     @Query(value = "SELECT COUNT(*) FROM voiture_view", nativeQuery = true)
     int countTotalVoitures();
 
+    @Query(value = "SELECT * FROM voiture_annonce WHERE etat_annonce = 1",nativeQuery = true)
+    List<ProprietaireVoitureView> findVoitureByEtat();
+
 }
