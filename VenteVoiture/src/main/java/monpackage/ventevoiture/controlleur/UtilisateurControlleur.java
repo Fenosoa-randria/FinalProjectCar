@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"http://finalprojectcar-production-aab1.up.railway.app"})
 @RequestMapping("/api/utilisateur")
 public class UtilisateurControlleur {
     @Autowired
