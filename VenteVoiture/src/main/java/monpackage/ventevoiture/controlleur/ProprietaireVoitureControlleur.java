@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = {"http://*"})
+
 @RequestMapping("/api/accueil")
 public class ProprietaireVoitureControlleur {
     @Autowired
@@ -29,7 +31,6 @@ public class ProprietaireVoitureControlleur {
     PhotoVoitureService photoVoitureService;
 
 
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @GetMapping("/selectAllVoiture")
     public List<ProprietaireVoitureView> selectAllVoiture() {
         try {
@@ -42,7 +43,6 @@ public class ProprietaireVoitureControlleur {
         return null;
     }
 
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @GetMapping("/selectAllPhotoVoiture")
     public List<PhotoVoiture> selectAllPhotoVoiture() {
         try {
@@ -55,13 +55,11 @@ public class ProprietaireVoitureControlleur {
         }
         return null;
     }
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @GetMapping("/selectCountVoiture")
     public int selectCountVoiture() {
         return proprio.countVoiture();
     }
 
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @GetMapping("/selectByIdVoiture")
     public ResponseEntity<List<ProprietaireVoitureView>> selectByIdVoiture(@RequestParam int id_voiture) {
             List<ProprietaireVoitureView> listeVoitures = proprio.getById(id_voiture);
@@ -71,7 +69,6 @@ public class ProprietaireVoitureControlleur {
                 return ResponseEntity.notFound().build();
             }
       }
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @GetMapping("/selectAllProposVoiture")
     public ProposVoitureResponse selectAllProposVoiture() {
         try {
@@ -92,7 +89,6 @@ public class ProprietaireVoitureControlleur {
         }
         return null;
     }
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @GetMapping("/rechercheVoiture")
     public ResponseEntity<List<ProprietaireVoitureView>> rechercheVoiture(@RequestParam String Marque, @RequestParam String Modele, @RequestParam String Energie, @RequestParam double prixMin, @RequestParam double prixMax) {
             List<ProprietaireVoitureView> listeVoitures = proprio.rechercheVoiture(Marque,Modele,Energie,prixMin,prixMax);
@@ -103,7 +99,6 @@ public class ProprietaireVoitureControlleur {
             }
 
     }
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
     @GetMapping("/rechercheAllVoiture")
     public List<ProprietaireVoitureView> rechercheAllVoiture(@RequestParam String mots) {
         try {
@@ -116,9 +111,8 @@ public class ProprietaireVoitureControlleur {
         }
         return null;
     }
-@Autowired
-MieuxVisiterService mieuxVisiterService;
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @Autowired
+    MieuxVisiterService mieuxVisiterService;
     @GetMapping("/selectAllMieuxVisite")
     public List<MieuxVisiter> selectAllVisite() {
         try {
@@ -130,6 +124,4 @@ MieuxVisiterService mieuxVisiterService;
         }
         return null;
     }
-
-
 }
