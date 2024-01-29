@@ -20,7 +20,7 @@ public class Login {
     @Autowired
     InscriptionService inscriptionService;
 
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @CrossOrigin(origins = {"*"})
     @PostMapping("/verificationLogin")
     public ResponseEntity verificationLogin(@RequestParam String email, @RequestParam String motdepasse) {
         try {

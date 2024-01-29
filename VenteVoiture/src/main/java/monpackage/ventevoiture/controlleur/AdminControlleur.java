@@ -119,7 +119,7 @@ public class AdminControlleur {
         }
     }
 
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @CrossOrigin(origins = {"*"})
     @GetMapping("/selectAllVoitureDemandeAnnonce")
     public List<AdminDemandeAnnonce> selectAllVoitureDemande() {
         try {
@@ -132,7 +132,7 @@ public class AdminControlleur {
         return null;
     }
 
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @CrossOrigin(origins = {"*"})
     @GetMapping("/selectAllByIdVoiture")
     public List<AdminDemandeAnnonce> selectAllByIdVoiture(@RequestParam int id_voiture) {
         try {
@@ -146,7 +146,7 @@ public class AdminControlleur {
         return null;
     }
 
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @CrossOrigin(origins = {"*"})
     @GetMapping("/SelectStatistiqueMarque")
     public ResponseEntity<List<AdminStatistique>> selectAllStatistique() {
         try {
@@ -158,7 +158,7 @@ public class AdminControlleur {
         }
         return null;
     }
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @CrossOrigin(origins = {"*"})
     @GetMapping("/selectAllMarque")
     public List<MarqueVoiture> selectAllMarque() {
         try {
@@ -170,7 +170,7 @@ public class AdminControlleur {
         }
         return null;
     }
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @CrossOrigin(origins = {"*"})
     @GetMapping("/selectAllModele")
     public List<ModelVoiture> selectAllModele() {
         try {
@@ -181,7 +181,7 @@ public class AdminControlleur {
         }
         return null;
     }
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @CrossOrigin(origins = {"*"})
     @GetMapping("/selectAllCategorie")
     public List<CategorieVoiture> selectAllCategorie() {
         try {
@@ -193,7 +193,7 @@ public class AdminControlleur {
         return null;
     }
 
-    @CrossOrigin(origins = {"http://localhost:8100", "http://localhost:4000"})
+    @CrossOrigin(origins = {"*"})
     @GetMapping("/selectAllEnergie")
     public List<EnergieVoiture> selectAllEnergie() {
         try {
