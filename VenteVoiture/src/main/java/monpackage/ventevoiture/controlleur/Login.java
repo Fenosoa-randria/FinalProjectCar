@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/login")
 public class Login {
 
@@ -20,7 +21,6 @@ public class Login {
     @Autowired
     InscriptionService inscriptionService;
 
-    @CrossOrigin(origins = {"*"})
     @PostMapping("/verificationLogin")
     public ResponseEntity verificationLogin(@RequestParam String email, @RequestParam String motdepasse) {
         try {
